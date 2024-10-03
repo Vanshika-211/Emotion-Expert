@@ -1,0 +1,4 @@
+uploads/*.MOV filter=lfs diff=lfs merge=lfs -text
+uploads/*.mp4 filter=lfs diff=lfs merge=lfs -text
+uploads/*.ogg filter=lfs diff=lfs merge=lfs -text
+uploads/*.wav filter=lfs diff=lfs merge=lfs -text
