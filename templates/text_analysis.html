@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Emotion Analysis - Emotion Xpert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #52c234;
+            background-image: linear-gradient(147deg, #52c234 0%, #061700 74%);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background-color: #52c234;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #45a127;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e0ffe0;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .result h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .result ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .result ul li {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1em;
+            border-bottom: 2px solid #333;
+            padding-bottom: 2px;
+        }
+
+        .back-link:hover {
+            color: #52c234;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Emotion Xpert</h1>
+    </div>
+
+    <div class="container">
+        <h2>Text Emotion Analysis</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="input_text">Enter Text</label>
+                <textarea name="input_text" id="input_text" placeholder="Type or paste your text here..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pdf_file">Or Upload a PDF File</label>
+                <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf">
+            </div>
+            <div class="form-group">
+                <button type="submit">Analyze Text</button>
+            </div>
+        </form>
+
+        {% if emotion_results %}
+        <div class="result">
+            <h3>Emotion Scores</h3>
+            <ul>
+                {% for emotion, score in emotion_results.items() %}
+                <li><strong>{{ emotion }}</strong>: {{ score|round(4) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}" class="back-link">Back to Home</a>
+    </div>
+
+</body>
+</html>

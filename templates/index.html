@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Xpert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #52c234;
+            background-image: linear-gradient(147deg, #52c234 0%, #061700 74%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 50px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 30%;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #52c234;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a127;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Emotion Xpert</h1>
+    </div>
+
+    <div class="container">
+        <!-- Video Analysis Card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='video_icon.png') }}" alt="Video Icon">
+            <h2>Video Analysis</h2>
+            <p>Use the video analysis to detect emotions from facial expressions.</p>
+            <ul>
+                <li>Anger</li>
+                <li>Happiness</li>
+                <li>Fear</li>
+                <li>Sadness</li>
+                <li>Neutral</li>
+                <li>Surprise</li>
+                <li>Disgust</li>
+                <li>Joy</li>
+            </ul>
+            <a href="{{ url_for('video_analysis_route') }}" class="btn">Video Analysis</a>
+        </div>
+
+        <!-- Audio Analysis Card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='audio_icon.png') }}" alt="Audio Icon">
+            <h2>Audio Analysis</h2>
+            <p>Use the audio analysis to detect emotions from speech.</p>
+            <ul>
+                <li>Anger</li>
+                <li>Happiness</li>
+                <li>Fear</li>
+                <li>Sadness</li>
+                <li>Neutral</li>
+                <li>Surprise</li>
+                <li>Disgust</li>
+                <li>Joy</li>
+            </ul>
+            <a href="{{ url_for('audio_analysis_route') }}" class="btn">Audio Analysis</a>
+        </div>
+
+        <!-- Text Analysis Card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='text_icon.png') }}" alt="Text Icon">
+            <h2>Text Analysis</h2>
+            <p>Use the text analysis to detect emotions in written content.</p>
+            <ul>
+                <li>Anger</li>
+                <li>Happiness</li>
+                <li>Fear</li>
+                <li>Sadness</li>
+                <li>Neutral</li>
+                <li>Surprise</li>
+                <li>Disgust</li>
+                <li>Joy</li>
+            </ul>
+            <a href="{{ url_for('text_analysis_route') }}" class="btn">Text Analysis</a>
+        </div>
+    </div>
+
+</body>
+</html>
